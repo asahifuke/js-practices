@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <script>
+      (async (url) => {
+        const parser = new DOMParser();
+        const response = await fetch(url);
+        const data = await response.text();
+        const doc = await parser.parseFromString(data, "text/html");
+        console.log(doc)
+      })('https://bootcamp.fjord.jp/');
+    </script>
+  </body>
+</html>
