@@ -26,13 +26,13 @@ function calendar() {
   function requireLastDay(year, month){
     return requireDay(year, month, 0);
   }
-  
+
   let result = `${requirMonth(requireArgv())}月 ${requireYear(requireArgv())}\n`.padStart(15, " ")
   result += '日 月 火 水 木 金 土\n'
   result += ''.padStart(requireFirstDay(requireYear(requireArgv()), requirMonth(requireArgv())).getDay() * 3, " ") 
   for (let nowDay = 1; nowDay <= requireLastDay(requirMonth(requireArgv()), requirMonth(requireArgv())).getDate(); nowDay++) {
     result += (String(nowDay).padStart(2 , " ")).padEnd(3, " "); 
-    if ((requireFirstDay(requirMonth(requireArgv()), requirMonth(requireArgv())).getDay() + nowDay) % 7 === 0) { result += '\n'}
+    if ((requireFirstDay(requireYear(requireArgv()), requirMonth(requireArgv())).getDay() + nowDay) % 7 === 0) { result += '\n'}
   }
   return result
 }
