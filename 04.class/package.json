@@ -10,9 +10,19 @@
   "scripts": {
     "test": "jest"
   },
+  "bin": {
+    "memo.js": "bin/cli.js"
+  },
   "dependencies": {
     "commander": "^9.4.0",
     "enquirer": "^2.3.6",
     "sqlite3": "^5.0.10"
-  }
+  },
+  "name": "04.class",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

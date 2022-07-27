@@ -1,6 +1,6 @@
 const { Select } = require('enquirer');
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('../db/memo.db');
+const db = new sqlite3.Database('/Users/asahi.fuke/Documents/js-practices/04.class/db/memo.db');
 
 class Memo {
   constructor(id, body) {
