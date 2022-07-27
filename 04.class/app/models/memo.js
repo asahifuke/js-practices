@@ -26,12 +26,12 @@ class Memo {
 
   static async choice() {
     const memos = await Memo.all();
-    return memos.map(memo => { return memo.split(); });
+    return memos.map((memo) => { return memo.split(); });
   }
 
   static async runPrompt(message, callback) {
     const memos = await Memo.all();
-    const prompt = await Memo.select(message);
+    const prompt = Memo.select(message);
     prompt.run().then(() => callback(memos, prompt));
   }
 
