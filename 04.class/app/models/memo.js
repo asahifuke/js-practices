@@ -26,11 +26,17 @@ class Memo {
 
   static async choice() {
     const memos = await Memo.all();
-    return memos.map((memo) => { return memo.split(); });
+    return memos.map(memo => { return memo.split(); });
+  }
+
+  static async runPrompt(message, callback) {
+    const memos = await Memo.all();
+    const prompt = await Memo.select(message);
+    prompt.run().then(() => callback(memos, prompt));
   }
 
   save() {
-    db.run("INSERT INTO memos(body) VALUES(?)", this.body);
+    db.run('INSERT INTO memos(body) VALUES(?)', this.body);
   }
 
   destroy() {
