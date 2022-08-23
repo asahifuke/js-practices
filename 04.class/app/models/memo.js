@@ -1,6 +1,8 @@
+require('dotenv').config();
 const { Select } = require('enquirer');
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('/Users/asahi.fuke/Documents/js-practices/04.class/db/memo.db');
+const db_path = process.env.DB_PATH ?? '/Users/asahi.fuke/Documents/js-practices/04.class/db/memo.db';
+const db = new sqlite3.Database(db_path);
 
 class Memo {
   constructor(id, body) {
@@ -9,15 +11,13 @@ class Memo {
   }
 
   static all() {
-    return new Promise((resolve) => {
-      const memos = [];
+    return new Promise(resolve => 
       db.all(`SELECT * FROM memos ORDER BY id ASC`, 
-        (error, rows) => rows.forEach(row => {
-          memos.push(new Memo(row.id, row.body));
-          resolve(memos);
-        })
-      );
-    });
+        (error, rows) =>  resolve(rows.map(row => {
+          return new Memo(row.id, row.body);
+        }))
+      )
+    );
   }
 
   static select(message) {
