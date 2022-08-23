@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Select } = require('enquirer');
 const sqlite3 = require('sqlite3');
-const db_path = process.env.DB_PATH ?? '/Users/asahi.fuke/Documents/js-practices/04.class/db/memo.db';
+const db_path = process.env.DB_PATH ?? './db/memo.db';
 const db = new sqlite3.Database(db_path);
 
 class Memo {
